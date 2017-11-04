@@ -21,7 +21,7 @@ public class Groop {
     private String name;
 
     @JsonManagedReference
-    @OneToMany (mappedBy = "groop", fetch = FetchType.EAGER)
+    @OneToMany(mappedBy = "groop", fetch = FetchType.EAGER)
     private List<Employee> employees;
 
     public int getId() {

@@ -1,7 +1,8 @@
 package com.example.demo.controller;
 
 
-import com.example.demo.models.Product;
+import com.example.demo.models.ProductModels.Product;
+import com.example.demo.models.ProductModels.Category;
 import com.example.demo.services.ProductDao;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -27,11 +28,14 @@ public class ProductController {
     @ResponseBody
     public List<Product> getAll () {
         List<Product> users = productDao.getAll();
-        for (Product s : users){
-            System.out.println(s.getId()+" "+s.getName()+" "+s.getCategory()+" "+s.getStatus());
-        }
         return users;
     }
 
+    @RequestMapping(value="/category/{id}")
+    @ResponseBody
+    public Category getByIds (@PathVariable ("id") int id){
+        Category categories = productDao.getByIds(id);
+        return categories;
+    }
 
 }

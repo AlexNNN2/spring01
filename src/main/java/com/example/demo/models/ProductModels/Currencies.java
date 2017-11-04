@@ -1,11 +1,7 @@
 package com.example.demo.models.ProductModels;
 
-import com.example.demo.models.Product;
-import com.fasterxml.jackson.annotation.JsonManagedReference;
-
 import javax.persistence.*;
 import javax.validation.constraints.NotNull;
-import java.util.List;
 
 @Entity
 @Table(name="currencies")
@@ -19,7 +15,7 @@ public class Currencies {
     @Column(name="name")
     private String name;
 
-    /*@JsonManagedReference
+/*    @JsonManagedReference
     @OneToMany(mappedBy = "price", fetch = FetchType.EAGER)
     private List<Price> prices;*/
 

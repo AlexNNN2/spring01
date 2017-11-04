@@ -1,6 +1,5 @@
 package com.example.demo.models.ProductModels;
 
-import com.example.demo.models.Product;
 import com.fasterxml.jackson.annotation.JsonBackReference;
 
 import javax.persistence.*;
@@ -18,7 +17,7 @@ public class Price {
     @Column(name="price")
     private String name;
 
-/*    @JsonBackReference
+    @JsonBackReference
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name="product_id")
     private Product product;
@@ -26,5 +25,5 @@ public class Price {
     @JsonBackReference
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name="currencie_id")
-    private Currencies currencies;*/
+    private Currencies currencies;
 }

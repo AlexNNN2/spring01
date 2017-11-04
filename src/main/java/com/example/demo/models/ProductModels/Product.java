@@ -1,4 +1,4 @@
-package com.example.demo.models;
+package com.example.demo.models.ProductModels;
 
 import com.example.demo.models.ProductModels.*;
 import com.example.demo.models.ProductModels.Status;
@@ -20,12 +20,12 @@ public class Product {
     @Column(name = "name")
     private String name;
 
-    @JsonBackReference
+
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name="category_id")
     private Category category;
 
-    @JsonBackReference
+
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name="status_id")
     private Status status;

@@ -7,8 +7,8 @@ import javax.validation.constraints.NotNull;
 import java.util.List;
 
 @Entity
-@Table(name = "status")
-public class Status {
+@Table(name = "status_Product")
+public class Status_product {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -19,9 +19,9 @@ public class Status {
     @Column(name = "name")
     private String name;
 
-    @JsonManagedReference
-    @OneToMany(mappedBy = "status", fetch = FetchType.EAGER)
-    private List<Employee> employees;
+/*    @JsonManagedReference
+    @OneToMany(mappedBy = "status_product", fetch = FetchType.EAGER)
+    private List<Product> products;*/
 
     public int getId() {
         return id;
@@ -39,11 +39,11 @@ public class Status {
         this.name = name;
     }
 
-    public List<Employee> getEmployees() {
-        return employees;
+/*    public List<Product> getProducts() {
+        return products;
     }
 
-    public void setEmployees(List<Employee> employees) {
-        this.employees = employees;
-    }
+    public void setProducts(List<Product> products) {
+        this.products = products;
+    }*/
 }

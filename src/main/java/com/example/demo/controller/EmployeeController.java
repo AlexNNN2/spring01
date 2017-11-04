@@ -5,7 +5,6 @@ import com.example.demo.services.EmployeeDao;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
-
 import java.util.List;
 
 @Controller
@@ -30,7 +29,7 @@ public class EmployeeController {
         return "Employee succesfully created!";
     }
 
-    @RequestMapping(value="/get_all")
+    @RequestMapping(value="/employee/get_all")
     @ResponseBody
     public List<Employee> getAll () {
         List<Employee> users = employeeDao.getAll();
@@ -67,10 +66,9 @@ public class EmployeeController {
         return "The user id is: " + userId;
     }
 
-    @RequestMapping(value="/user/{id}", method = RequestMethod.GET)
+    @RequestMapping(value="/employee/{id}", method = RequestMethod.GET)
     @ResponseBody
     public Employee getById (@PathVariable int id){
-        System.out.println(employeeDao.getById(id).toString());
         Employee em = employeeDao.getById(id);
         return em;
     }

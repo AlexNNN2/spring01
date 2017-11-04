@@ -5,6 +5,8 @@ import com.example.demo.services.GroopDao;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.List;
+
 
 @RestController
 public class GroopController {
@@ -14,7 +16,13 @@ public class GroopController {
     @RequestMapping(method = RequestMethod.GET, value = "/groop/{id}")
     @ResponseBody
     public Groop getById(@PathVariable("id") int id){
-        System.out.println(groopDao.getById(id));
         return groopDao.getById(id);
+    }
+
+    @RequestMapping(value="/groop/get_all")
+    @ResponseBody
+    public List<Groop> getAll () {
+        List<Groop> users = groopDao.getAll();
+        return users;
     }
 }

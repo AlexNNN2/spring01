@@ -1,5 +1,7 @@
 package com.example.demo.models;
 
+import com.example.demo.models.ProductModels.*;
+import com.example.demo.models.ProductModels.Status;
 import com.fasterxml.jackson.annotation.JsonBackReference;
 
 import javax.persistence.*;
@@ -18,57 +20,14 @@ public class Product {
     @Column(name = "name")
     private String name;
 
-    @OneToOne(fetch = FetchType.EAGER)
-    @JoinColumn(name="price_id")
-    private Price_product price_product;
+    /*@JsonBackReference
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name="category_id")
+    private Category category;
 
     @JsonBackReference
-    @ManyToOne(fetch = FetchType.EAGER)
-    @JoinColumn(name="category_id")
-    private CategoryProduct categoryProduct;
-
-
-    @ManyToOne(fetch = FetchType.EAGER)
+    @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name="status_id")
-    private Status_product status_product;
+    private Status status;*/
 
-    public int getId() {
-        return id;
-    }
-
-    public void setId(int id) {
-        this.id = id;
-    }
-
-    public String getName() {
-        return name;
-    }
-
-    public void setName(String name) {
-        this.name = name;
-    }
-
-    public Price_product getPrice_product() {
-        return price_product;
-    }
-
-    public void setPrice_product(Price_product price_product) {
-        this.price_product = price_product;
-    }
-
-    public CategoryProduct getCategory_product() {
-        return categoryProduct;
-    }
-
-    public void setCategory_product(CategoryProduct category_product) {
-        this.categoryProduct = category_product;
-    }
-
-    public Status_product getStatus_product() {
-        return status_product;
-    }
-
-    public void setStatus_product(Status_product status_product) {
-        this.status_product = status_product;
-    }
 }

@@ -1,35 +1,24 @@
 package com.example.demo.models.ProductModels;
 
-import com.example.demo.models.ProductModels.*;
-import com.example.demo.models.ProductModels.Status;
-import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 
 import javax.persistence.*;
 import javax.validation.constraints.NotNull;
+import java.util.List;
 
 @Entity
 @Table(name = "product")
 public class Product {
 
+    private int id;
+    private String name;
+    private Category category;
+    private Status status;
+    private List<Price> prices;
+
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id")
-    private int id;
-
-    @NotNull
-    @Column(name = "name")
-    private String name;
-
-
-    @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name="category_id")
-    private Category category;
-
-
-    @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name="status_id")
-    private Status status;
-
     public int getId() {
         return id;
     }
@@ -38,27 +27,43 @@ public class Product {
         this.id = id;
     }
 
+    @Column(name = "name")
     public String getName() {
         return name;
+    }
+
+    @JsonManagedReference
+    @ManyToOne
+    @JoinColumn(name="category_id")
+    public Category getCategory() {
+        return category;
+    }
+
+    @JsonManagedReference
+    @ManyToOne(fetch = FetchType.EAGER)
+    @JoinColumn(name="status_id")
+    public Status getStatus() {
+        return status;
+    }
+
+    @OneToMany(fetch = FetchType.EAGER, mappedBy = "product")
+    public List<Price> getPrices() {
+        return prices;
     }
 
     public void setName(String name) {
         this.name = name;
     }
 
-    public Category getCategory() {
-        return category;
-    }
-
     public void setCategory(Category category) {
         this.category = category;
     }
 
-    public Status getStatus() {
-        return status;
-    }
-
     public void setStatus(Status status) {
         this.status = status;
+    }
+
+    public void setPrices(List<Price> prices) {
+        this.prices = prices;
     }
 }

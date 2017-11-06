@@ -1,46 +1,44 @@
 package com.example.demo.models.ProductModels;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
 import javax.persistence.*;
-import javax.validation.constraints.NotNull;
+import java.util.List;
 
 @Entity
 @Table(name="status_product")
 public class Status {
 
+    private int id;
+    private String name;
+    private List<Product> products;
+
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name="id")
-    private int id;
-
-    @NotNull
-    @Column(name="name")
-    private String name;
-
-/*    @JsonManagedReference
-    @OneToMany(mappedBy = "status", fetch = FetchType.EAGER)
-    private List<Product> products;*/
-
     public int getId() {
         return id;
+    }
+
+    @Column(name="name")
+    public String getName() {
+        return name;
+    }
+
+    @JsonBackReference
+    @OneToMany(mappedBy = "status", fetch = FetchType.EAGER)
+    public List<Product> getProducts() {
+        return products;
     }
 
     public void setId(int id) {
         this.id = id;
     }
 
-    public String getName() {
-        return name;
-    }
-
     public void setName(String name) {
         this.name = name;
     }
 
-/*    public List<Product> getProducts() {
-        return products;
-    }
-
     public void setProducts(List<Product> products) {
         this.products = products;
-    }*/
+    }
 }

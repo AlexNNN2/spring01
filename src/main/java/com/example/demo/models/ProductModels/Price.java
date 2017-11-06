@@ -3,27 +3,55 @@ package com.example.demo.models.ProductModels;
 import com.fasterxml.jackson.annotation.JsonBackReference;
 
 import javax.persistence.*;
-import javax.validation.constraints.NotNull;
 
 @Entity
 @Table(name="price_product")
 public class Price {
+
+    private int id;
+    private String name;
+    private Product product;
+    private Currencies currencies;
+
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name="id")
-    private int id;
+    public int getId() {
+        return id;
+    }
 
-    @NotNull
     @Column(name="price")
-    private String name;
+    public String getName() {
+        return name;
+    }
 
     @JsonBackReference
-    @ManyToOne(fetch = FetchType.LAZY)
+    @ManyToOne(fetch = FetchType.EAGER)
     @JoinColumn(name="product_id")
-    private Product product;
+    public Product getProduct() {
+        return product;
+    }
 
     @JsonBackReference
-    @ManyToOne(fetch = FetchType.LAZY)
+    @OneToOne(fetch = FetchType.EAGER)
     @JoinColumn(name="currencie_id")
-    private Currencies currencies;
+    public Currencies getCurrencies() {
+        return currencies;
+    }
+
+    public void setId(int id) {
+        this.id = id;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public void setProduct(Product product) {
+        this.product = product;
+    }
+
+    public void setCurrencies(Currencies currencies) {
+        this.currencies = currencies;
+    }
 }

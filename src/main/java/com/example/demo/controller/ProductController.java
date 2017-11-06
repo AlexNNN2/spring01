@@ -27,8 +27,8 @@ public class ProductController {
     @RequestMapping(value="/product/get_all")
     @ResponseBody
     public List<Product> getAll () {
-        List<Product> users = productDao.getAll();
-        return users;
+        List<Product> products = productDao.getAll();
+        return products;
     }
 
     @RequestMapping(value="/category/{id}")
